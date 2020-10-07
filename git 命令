@@ -1,0 +1,49 @@
+
+
+Git操作的具体步骤
+1、在想操作的目录右键启动bush
+2、配置Git基本操作
+【注】没有消息就是好消息
+
+3、Git init  在本地进行初始化(建立暂存区)
+.Git文件存储当前项目所有的版本信息
+
+4、工作区->暂存区
+git add 文件名
+git add * 提交所有文件
+
+git commit -m “提交文件的描述
+
+5、查看当前工作区的状态
+git status
+
+6、恢复上次文件提交暂存区前内容
+git checkout  文件名   恢复上次文件提交前内容
+
+7、查看工作区和暂存区内容的区别
+git diff
+
+8、clear 清屏
+
+9、查看所有提交
+git log 
+
+10、恢复某次提交的版本
+git reset --hard 版本号
+
+
+11、生成ssh密匙
+ssh-keygen -t  rsa -C "邮箱"
+windows 电脑查找文件:我的电脑  ---> 用户   --->  用户文件夹- ->.ssh(隐藏文件) -->.pub文件
+
+12、GitHub 配置密匙
+
+13、暂存区提交指定远程仓库
+git remote add origin 仓库地址   (指定仓库)
+git push -u origin master  推送
+
+14、克隆项目
+git clone 仓库地址
+
+15、同步远程仓库的代码
+git pull(更新)
