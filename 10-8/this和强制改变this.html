@@ -42,9 +42,12 @@
             alert(x + "," + y);
         }
         // show.apply("call",[20,40]);
-        var res = show.bind("bind");
+        // var res = show.bind("bind");
 
-        res(40,50);
+        // res(40,50);
+        var arr = [10,20,30,40];
+        alert(Math.min.apply(null,arr));
+        alert(Math.max.apply(null,arr));
     </script>
 </head>
 <body>
