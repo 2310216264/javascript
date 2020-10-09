@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+工厂模式
+        1、原料
+        2、加工
+        3、出厂
+
+        如果我们某一个函数，使用new运算符去调用
+            1、当前函数中this指向新创建的对象
+            2、自动去完成1、原料2、加工3、出厂操作
+
+        这种通过new调用函数，我们把它叫做构造函数，构造函数可用构造对象
+        【注意】构造函数一般情况下首字母大写
+*/
+
+function Person(name,sex){
+    // 1原料
+    
+        //2加工
+        this.name = name,
+        this.sex=sex,
+        
+        Person.prototype.showName=function(){
+            // document.write("我的名字"+this.name);
+            return("我的名字"+this.name);
+        },
+        Person.prototype.showSex=function(){
+            return("我的性别"+this.sex);
+        }
+    
+    // 出厂
+    return this;
+}
+
+        var p1 = new Person("张世豪","女");
+        document.write(p1.showName());
+        document.write(p1.showSex());
+        
+        var p2 = new Person("red","女");
+        alert(p1.showName === p2.showName);
+        /*
+            1、没有new
+            2、每一个新创建出来的对象独有一套函数
+        */ 
+    </script>
+</body>
+</html>
