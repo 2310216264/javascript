@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //map 映射
+        let map = new Map();
+        map.set("张三","打鱼的");
+        map.set("李四","种地的");
+        map.set("王五","挖煤的");
+        map.set("李四","打猎的");
+
+        console.log(map);
+
+        // 取值
+        // document.write(map.get("王五"));
+
+        /*
+            map遍历
+        */
+       for(let [key,value] of map){
+           document.write(key,value+"<br>");
+       }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
