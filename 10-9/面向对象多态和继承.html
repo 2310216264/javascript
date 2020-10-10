@@ -7,13 +7,23 @@
 </head>
 <body>
     <script>
+
+        /*
+            面向对象，继承、封装(封装构造函数)、多态
+
+            面向对象是一个编程思想，支撑面向对象编程思想的语法是类，构造函数充当类的角色。
+            构造函数和对象实现面向对象程序的时候
+        */
+
+
         /*
             面向对象，继承，封装(封装构造函数)、多态
         */
-        function Dog({name,type,age}){
-            this.naem = name;
+        function Dog({name,type,age,color}){
+            this.name = name;
             this.type = type;
             this.age = age;
+            this.color = color;
         }
 
         /*
@@ -24,20 +34,47 @@
                 alert(this.name + "会飞快的奔跑");
             },
             showSelf:function(){
-                alert(`这是一个${this.type}的,${this.age}的,叫${this.name}的小狗`);
+                alert(`这是一个${this.type}的,${this.age}岁的,叫${this.name}的小狗`);
+            },
+            showColor:function(){
+                alert(`${this.color}`);
             }
         }
         /*
             分类更加细的构造函数。继承
         */
-       function Teddy(naem,type,age,color){
+
+       function Teddy({name,type,age,color}){
            //1、继承父一级构造函数所有属性
+           //构造函数的伪装
            Dog.call(this,{
                name:name,
                type:type,
                age:age
            })
+           this.color = color;
        }
+        /*
+            原型链继承
+        */
+
+    //    Teddy.prototype = Dog.prototype;  非常错误的写法
+       for(var funcName in Dog.prototype){
+            Teddy.prototype[funcName] = Dog.prototype[funcName];
+       }
+    //    Teddy.prototype.showColor = function(){
+    //        alert(this.color);
+    //    }
+        /*
+            只会在子一级生效，并不会影响父一级构造函数的方法
+
+            继承和多态用一件事情完全不同的侧重
+            继承：侧重是从父一级构造函数，集成到的属性和方法
+            多态：侧重是，子一级，自己重写和新增的属性和方法
+        */
+        Teddy.prototype.showSelf = function(){
+            alert(`这是一个${this.type}的,${this.age}岁的,${this.color}颜色的叫${this.name}的小狗`);
+        }
 
        var xiaohong = new Teddy({
            name:"小红",
@@ -45,6 +82,14 @@
            age:10,
            color:"红色"
        })
+      
+      var xiaohei = new Dog({
+          name:"小黑",
+          type:"拉布拉多",
+          age:5,
+          color:"红色"
+      })
+      xiaohong.showSelf();
     </script>
 </body>
 </html>
