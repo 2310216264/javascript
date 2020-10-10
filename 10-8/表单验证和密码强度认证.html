@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 250px;
+            height: 250px;
+            border: 1px solid black;
+            padding: 50px;
+            text-align: center;
+            margin: 100px auto;
+        }
+        #div1 input{width: 250px;height: 30px;font-size: 18px;margin-top: 20px;}
+        #div1 span{margin-top: 5px;font-size: 14px;color: gray;}
+        #div1 .testcode{
+            width: 70px;height: 30px;line-height: 30px;
+            background-color: gray;color: white;float: left;
+            margin-left: 12px;margin-top: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var ousername = document.getElementById("username");
+            var ousername_span = document.getElementById("username_span");
+            var opassword = document.getElementById("password")
+
+            var odiv = document.getElementById("div1");
+            var testdiv = document.getElementsByClassName("testcode");
+
+            //添加失去焦点事件
+            ousername.onblur = function(){
+                var ovalue = ousername.value;
+                //判断用户名长度是否符合要求
+                if(ovalue.length<6||ovalue.length>18){
+                    ousername_span.innerHTML = "！长度应为6~18个字符";
+                    ousername_span.style.color = "red";
+                    
+                    //判断首字母是否是字母
+                }else if(!/^[a-zA-Z]/.test(ovalue)){
+                    ousername_span.innerHTML = "！邮件地址必须以英文字母开头";
+                    ousername_span.style.color = "red";
+                }else if(/\W+/.test(ovalue)){
+                    ousername_span.innerHTML = "!邮件地址需由字母、数字或下划线组成"
+                    ousername_span.style.color = "red";
+                }else{
+                    ousername_span.innerHTML = "√该用户可注册";
+                    ousername_span.style.color = "green";    
+                }
+            }
+
+            //给密码输入框添加键盘事件
+            /*
+                keydown事件触发的时间是，文本输入之前
+                keyup
+
+                密码强度归类
+                1、弱   纯数字 纯小写 纯大写
+                2、中   两两混合
+                3、强   三种都有
+            */
+            opassword.onkeyup = function(){
+                
+                var ovalue = this.value;
+                    //每次触发之前，将上一次样式全部清空
+                    for(var i=0;i<testdiv.length;i++){
+                        testdiv[i].style.backgroundColor = 'gray';
+                    }
+
+                if(ovalue.length>=6){
+                    //开始密码强度验证
+                    if(/^\d+$/.test(ovalue) || /^[a-z]+$/.test(ovalue) || /^[A-Z]+$/.test(ovalue) ){
+                        
+                        testdiv[0].style.backgroundColor = 'red';
+                    }else if(/\d/.test(ovalue) && /[a-z]/.test(ovalue) && /[A-Z]/.test(ovalue)){
+                        testdiv[2].style.backgroundColor = 'green';
+                    }else{
+                        
+                        testdiv[1].style.backgroundColor = 'orange';
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <input id="username" type="text" placeholder="用户名">
+        <span id="username_span">6~18个字符，可使用字母、数字、下划线，需以字母开头</span>
+        <input id="password" type="text" placeholder="密码">
+        <div class="testcode">弱</div>
+        <div class="testcode">中</div>
+        <div class="testcode">强</div>
+    </div>
+</body>
+</html>

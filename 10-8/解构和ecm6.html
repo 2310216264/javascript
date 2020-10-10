@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            中括号解构
+            大括号解构
+        */
+
+        // var [x,y,z] = [10,20,30];
+        // alert(x + "," + y);
+
+        // var {name,age,sex} = {
+        //     age:18,
+        //     name:"钢铁侠",
+        //     sex:"男"
+        // }
+
+        // document.write(name);
+        // document.write(age);
+        // document.write(sex);
+
+
+        /*
+            使用解构的好处
+                1、交换两个数
+                2、函数可用返回多个值
+                3、函数定义参数，和传入参数的顺序改变
+                【注也可在函数中赋值默认值】
+        */
+        var [x,y] = [10,20];
+        [x,y] = [y,x];
+        alert(x+","+y);
+
+        function show(){
+            return ["结果1","结果2","结果3"];
+        } 
+
+        var [a,b,c] = show();
+        alert(a + ","+c);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

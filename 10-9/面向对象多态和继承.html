@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            面向对象，继承，封装(封装构造函数)、多态
+        */
+        function Dog({name,type,age}){
+            this.naem = name;
+            this.type = type;
+            this.age = age;
+        }
+
+        /*
+            通过构造函数的原型添加方法
+        */
+        Dog.prototype = {
+            run:function(){
+                alert(this.name + "会飞快的奔跑");
+            },
+            showSelf:function(){
+                alert(`这是一个${this.type}的,${this.age}的,叫${this.name}的小狗`);
+            }
+        }
+        /*
+            分类更加细的构造函数。继承
+        */
+       function Teddy(naem,type,age,color){
+           //1、继承父一级构造函数所有属性
+           Dog.call(this,{
+               name:name,
+               type:type,
+               age:age
+           })
+       }
+
+       var xiaohong = new Teddy({
+           name:"小红",
+           type:"泰迪",
+           age:10,
+           color:"红色"
+       })
+    </script>
+</body>
+</html>

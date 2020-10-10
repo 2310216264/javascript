@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            let 关键字是用来声明变量 更过分，只要遇到大括号就形成作用域
+            【注】let关键字声明的变量，所在作用域叫做块儿级作用域
+
+            var 关键字声明变量 将变量或者形参所在函数的作为作用域
+        */
+        window.onload = function(){
+            var btns = document.getElementsByTagName("button");
+            for(let i=0;i<btns.length;i++){
+                btns[i].onclick = function(){
+                    alert(i);
+                }
+            }
+            // const ip = "134646";
+            // document.write(ip);
+            // if(!(ip = "123564")){
+            //     document.write("const不能修改");
+            // }
+        }
+        /*
+            const 声明变量，变量值只能在声明的时候确定，后续是没有办法修改的。
+            【注】const声明常量(变量没有办法修改)
+        */
+    </script>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+</body>
+</html>

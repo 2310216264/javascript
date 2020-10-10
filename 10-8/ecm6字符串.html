@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            传统字符串：所有单引号，双引号括起来的都叫字符串
+            ECNA6字符串：反引号
+
+            1、ECNA6字符串，想怎么写怎么写，换行，代码缩进都能体现出
+            2、${变量/表达式/函数调用}
+        */
+
+        function showself({name,age,sex="男"}){
+            alert(`我叫${name}，今年${age}岁，是一位${sex}性`);
+        }
+        showself({
+            age:18,
+            name:"小明",
+            sex:"女"
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

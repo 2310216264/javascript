@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            数组
+                for循环
+                for...in
+                foreach
+                for...of
+            对象
+                for..in
+            set 
+                for...of
+            map 
+                for...of
+        */
+       var person = {
+           username:"钢铁侠",
+           age:20,
+           sex:"男"
+       }
+       for(var attr in person){
+           document.write("对象"+ attr + person[attr]+"<br>");
+       }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var person = {
+        //     username:"钢铁侠",
+        //     show:function(){
+        //         alert(person.username);
+        //         alert(this.username);
+        //     }
+        // }
+        // person.show();
+
+        
+        
+        /*
+            call
+                格式：函数名.call();
+                参数：
+                    第一个参数：传入该函数this指向的对象，传入什么强制指向什么
+                    第二个参数开始：讲原函数的参数往后顺延一位
+        */
+        // show.call("call",20,40);
+
+        /*
+            apply
+            格式：函数名.apply()
+            参数：
+                第一个参数：传入该函数this指向的对象，传入什么强制指向什么
+                第二个惨：数组 数组放入我们原有的参数
+        */
+
+        /*
+            bind方法 预设this指向
+        */
+
+        function show(x,y){
+            alert(this);
+            alert(x + "," + y);
+        }
+        // show.apply("call",[20,40]);
+        // var res = show.bind("bind");
+
+        // res(40,50);
+        var arr = [10,20,30,40];
+        alert(Math.min.apply(null,arr));
+        alert(Math.max.apply(null,arr));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
