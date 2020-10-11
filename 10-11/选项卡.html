@@ -4,8 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #div1 button{width: 100px;height: 30px;background-color: gray;color: white;font-size: 18px;}
+        #div1 .active{background-color: orange;color: blue;}
+        #div1 div{width: 340px;height: 300px;border: 1px solid black;display: none;}
+    </style>
+    <script>
+        window.onload = function(){
+            var div1 = document.getElementById("div1");
+            var obt = div1.getElementsByTagName("button");
+            var odiv = div1.getElementsByTagName("div");
+            
+            
+            for(var i=0;i<obt.length;i++){  
+                obt[i].index = i;
+                obt[i].onclick = function(){
+                    for(var j=0;j<obt.length;j++){
+                        obt[j].className = '';  
+                        odiv[j].style.display = 'none';
+                    }
+                   
+                    odiv[this.index].style.display = 'block';
+                   this.className = "active";
+                }
+            }
+        }
+    </script>
 </head>
 <body>
-    
+    <div id="div1">
+        <button class="active">HTML5</button>
+        <button>pyton</button>
+        <button>java</button>
+        <div style="display: block;">html5</div>
+        <div>python</div>
+        <div>java</div>
+    </div>
 </body>
 </html>
