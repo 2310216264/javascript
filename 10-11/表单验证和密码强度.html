@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 250px;
+            height: 250px;
+            border: 1px solid black;
+            padding: 50px;
+            text-align: center;
+            margin: 100px auto;
+            background-color: lightgray;
+        }
+        #div1 input{width: 250px;height: 30px;font-size: 18px;margin-top: 20px;}
+        #div1 span{margin-top: 5px;font-size: 14px;color: gray;}
+        #div1 .testCode{width: 70px;height: 30px;line-height: 30px;background-color: gray;color: white;float: left;margin-left: 12px;margin-top: 5px;}
+        
+        
+    </style>
+    <script>
+        window.onload = function(){
+            var ousernaem = document.getElementById("username");
+            var ousernaem_span = document.getElementById("usernaem_span");
+            var word = document.getElementById("password");
+
+            var odiv = document.getElementById("div1");
+            var adiv = odiv.getElementsByClassName("testCode");
+            //添加失去焦点事件
+            ousernaem.onblur = function(){
+                var ovalue = ousernaem.value;
+                if(ovalue.length<6||ovalue.length>18){
+                    ousernaem_span.innerHTML = '!长度应为6~18个字符';
+                    ousernaem_span.style.color = 'red';       
+                }else if(!/^[a-zA-Z]/.test(ovalue)){
+                    ousernaem_span.innerHTML = '!邮件地址必须以英文字母开头';
+                    ousernaem_span.style.color = 'red'; 
+                }else if(/\W/g.test(ovalue)){
+                    ousernaem_span.innerHTML = '!邮件地址必须由字母，数字下划线组成';
+                    ousernaem_span.style.color = 'red'; 
+                }else{
+                    ousernaem_span.innerHTML = '√用户名可注册';
+                    ousernaem_span.style.color = 'green'; 
+                }
+            }
+            for(var i=0;i<adiv.length;i++){
+                adiv[i].style.backgroundColor = 'gray';
+            }
+
+            word.onkeyup = function(){
+                for(var i=0;i<adiv.length;i++){
+                adiv[i].style.backgroundColor = 'gray';
+            }
+                var value = word.value;
+                if(value.length >=6){
+                    //开始密码强度验证
+                    if(/^\d+$/.test(value) || /^[a-z]+$/.test(value) || /^[A-Z]+$/.test(value)){
+                        adiv[0].style.backgroundColor = "red";
+                    }else if(/\d/.test(value) && /[a-z]/.test(value) && /[A-Z]/.test(value)){
+                        adiv[2].style.backgroundColor = "green";
+                    }else{
+                        adiv[1].style.backgroundColor = "orange";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <input type="text" id="username" placeholder="用户名">
+        <span id="usernaem_span">6~18个字符,可使用字母、数字、下划线、需以字母开头</span>
+        <input type="text" id="password" placeholder="密码" >
+        <div class="testCode">弱</div>
+        <div class="testCode">中</div>
+        <div class="testCode">强</div>
+    </div>
+</body>
+</html>
