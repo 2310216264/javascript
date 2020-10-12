@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{width: 100px;height: 200px;background-color: gray;position: absolute;left: -100px;top: 400px;}
+        #div1 span{text-align: center; width: 20px;height: 60px;background: orange;position: absolute;left: 100px;top: 70px;;line-height: 20px;}
+    </style>
+    <script>
+        /*
+            鼠标移入
+        */
+       window.onload = function(){
+           var odiv = document.getElementById("div1");
+           odiv.onmouseover = function(){
+                starMove(5,0);
+           }
+           odiv.onmouseout = function(){
+                starMove(-5,-100);
+           }
+       }
+
+
+       var timer = null;
+       function starMove(speed,iTarget){
+        //    var speed = 5;
+            var odiv = document.getElementById("div1");
+            clearInterval(timer);
+            timer =  timer = setInterval(function(){
+                //运动和停止运动
+                if(odiv.offsetLeft == iTarget){
+                    clearInterval(timer);
+                }else{
+                    odiv.style.left = odiv.offsetLeft + speed + 'px';
+                }
+            },30);
+       }
+
+    //    function starMove2(){
+    //        var speed = -5;
+    //         var odiv = document.getElementById("div1");
+    //         clearInterval(timer);
+    //         timer =  timer = setInterval(function(){
+    //             //运动和停止运动
+    //             if(odiv.offsetLeft == -100){
+    //                 clearInterval(timer);
+    //             }else{
+    //                 odiv.style.left = odiv.offsetLeft + speed + 'px';
+    //             }
+    //         },30);
+    //    }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <span>分享到</span>
+    </div>
+</body>
+</html>

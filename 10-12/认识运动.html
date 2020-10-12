@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{position: relative;}
+        button{width: 100px;height: 30px;}
+        div{width: 200px;height: 200px;background-color: red;position: absolute;}
+    </style>
+    <script>
+        window.onload = function(){
+            var obtn = document.getElementById("btn1");
+            var odiv = document.getElementById("div1");
+
+            var speed = 7;
+            var l = odiv.style.left
+            obtn.onclick = function(){
+
+                timer = setInterval(function(){
+                    if(odiv.offsetLeft>=500){
+                        clearInterval(timer);
+                    }else{
+                        odiv.style.left = odiv.offsetLeft + speed + 'px';
+                    }
+                },30);
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn1">开始多人运动</button>
+    <div id="div1"></div>
+</body>
+</html>

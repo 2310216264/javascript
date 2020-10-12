@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{width: 100px;height: 100px;position: absolute;background: red;}
+
+    </style>
+    <script>
+        window.onload = function(){
+            var btn = document.getElementById("btn");
+            var odiv = document.getElementById("div1");
+            btn.onclick = function(){
+                startMove(500);
+            }
+        }
+
+        var timer = null;
+        function startMove(iTar){
+            var odiv = document.getElementById("div1");
+            clearInterval(timer);
+            timer = setInterval(function(){
+                var speed = (iTar - odiv.offsetLeft) / 8;
+                speed = speed > 0? Math.ceil(speed) :Math.floor(speed);
+
+                
+                if(odiv.offsetLeft == iTar){
+                    clearInterval(timer);
+                }else{
+                    odiv.style.left = odiv.offsetLeft + speed + 'px';
+                }
+
+            },30);
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">开始运动</button>
+    <div id="div1"></div>
+</body>
+</html>
