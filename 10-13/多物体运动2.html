@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{ width: 100px;height: 100px;margin-top: 50px;background: red;}
+        #div1{opacity: 0.3;width: 100px;height: 100px;margin-top: 50px;background: red;filter:alpha(opacity=30);}
+    </style>
+    <script>
+        window.onload = function(){
+            var odiv = document.getElementsByTagName("div");
+            odiv[0].onclick = function(){
+                startMove(this,"width",300);
+            }
+
+            odiv[1].onclick = function(){
+                startMove(this,"height",300);
+            }
+
+            odiv[2].onclick = function(){
+                startMove(this,"margin-left",300);
+            }
+
+            odiv[3].onclick = function(){
+                startMove(this,"fontSize",100);
+            }
+
+            odiv[4].onmouseover = function(){
+                startMove(this,"opacity",100);    
+            }
+
+            odiv[4].onmouseout = function(){
+                startMove(this,"opacity",30);    
+            }
+        }
+
+        function startMove(node,attr,iTrage){
+            var timer = null;
+            node.timer = setInterval(function(){
+                //计算速度
+                var iCur = null;
+                
+                //如果样式是透明度的话进行取整
+                if(attr == 'opacity'){
+                    iCur = parseInt(parseFloat(getStyle(node,"opacity"))*100);
+                }else{
+                    iCur = parseInt(getStyle(node,attr));
+                }
+            
+            var speed = (iTrage - iCur) / 8;
+            speed = speed>0?Math.ceil(speed):Math.floor(speed);
+
+            if(iCur == iTrage){
+                clearInterval(timer);
+            }else{
+                if(attr == 'opacity'){
+                    iCur += speed;
+                    node.style.opacity = iCur / 100;
+                    node.style.filter = "alpha( "+ iCur +")";
+                }else{
+                    node.style[attr] = iCur + speed + 'px';
+                }
+            }
+
+            },30)
+        }
+        function getStyle(node,cssStr){
+            return node.currentStyle ? node.currentStyle[cssStr]:getComputedStyle(node)[cssStr];
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div>div</div>
+    <div id="div1"></div>
+</body>
+</html>
