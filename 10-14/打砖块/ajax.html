@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var obtn = document.getElementById("btn1");
+            obtn.onclick = function(){
+                // 1创建ajax对象
+                // var xhr = new XMLHttpRequest();
+                var xhr = new XMLHttpRequest()?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+
+                // 2调用open
+                /*
+                    第一个参数：请求方式 get post
+                    第二个参数: url
+                    第三个参数： 是否异步
+                        true 异步
+                        false 同步
+                */
+                xhr.open("get","123.txt",true);
+
+                //3、调用send
+                xhr.send();
+
+                // 4、等待数据响应
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4){
+                        alert(xhr.responseText);
+                    }
+                }
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <button id="btn1">下载数据</button>
+</body>
+</html>
