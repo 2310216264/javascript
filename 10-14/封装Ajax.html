@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function $asax({method = "get",url,data}){
+            //创建Ajax对象
+            var xhr = null;
+            try{
+                xhr = new XMLHttpRequest();
+            }catch(error){
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            if(method == "get" && data){
+                url += "?" + data;
+            }
+            
+            xhr.open(method,url,true);
+
+            if(method == "get" && data){
+                xhr.send();
+            }
+            if(method == "post" && data){
+                 //必须在send方法之前，去设置请求的格式
+                 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+                 xhr.send(data);
+            }
+            
+            //数据响应
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    //判断本次下载的状态码都是多少
+                    if(xhr.status == 200){
+                        alert(xhr.responseText);
+                    }else{
+                        alert("Error:" + xhr.status);
+                    }
+                }
+            
+            }
+            
+            
+        }
+        
+            window.onload = function(){
+                var oget = document.getElementById("get");
+                var opost = document.getElementById("post");
+
+                oget.onclick = function(){
+                    $asax({
+                    url:"1.get.php",
+                    data:"username=xxx"
+                })
+
+                opost.onclick = function(){
+                    $asax({
+                    method:"post",
+                    url:"1.post.php",
+                    data:"username=xxx"
+                })
+            }
+            
+            }}   
+    </script>
+</head>
+<body>
+    <button id="get">GET请求</button>
+    <button id="post">POST请求</button>
+</body>
+</html>

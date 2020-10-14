@@ -39,6 +39,7 @@
                         speedY *= -1;
                     }
                     if(oBall.offsetTop >= 580){
+                        alert("分数是" + (60-aBricks.length));
                         alert("GAME OVER");
                         window.location.reload();
                     }
@@ -51,8 +52,10 @@
                        speedY *= -1;
                    }
                    //2、小球和砖块发生碰撞
+                   cont = 0;
                    for(var i = 0; i < aBricks.length; i++){
                        if(konck(aBricks[i], oBall)){
+                           oBall.style.backgroundColor = randomColor();
                            speedY *= -1;
                            //砖块要被删除
                            oBrick.removeChild(aBricks[i]);
