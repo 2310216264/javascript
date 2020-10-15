@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function dowond(data){
+            alert("数据是" + data);
+        }
+    </script>
+
+    <script>
+       window.onload = function(){
+           var btn1 = document.getElementById("btn");
+           btn1.onclick = function(){
+               var script = document.createElement("script");
+               script.src = "./demo.js";
+               document.body.appendChild(script);
+           }
+       }
+    </script>
+
+</head>
+<body>
+    <!-- src 属性可以完成跨源 -->
+    <!-- <img src="" alt=""> -->
+    <button id="btn">获得数据</button>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./ajax.js"></script>
+    <script>
+        window.onload = function(){
+            var obt = document.getElementById("btn1");
+            var oul = document.getElementById("ul1");
+            obt.onclick = function(){
+                $ajax({
+                    method:"get",
+                    url:"getnew.php",
+                    success:function(restult){
+                        var arr = JSON.parse(restult);
+                        var str = ``;
+                       
+                        // return true;
+                        for(var i=0;i<arr.length;i++){
+                            str+=`<li>
+                                <a href="#${i}">${arr[i].title}</a> 
+                                <span>【${arr[i].date}】</span>
+                                </li>`
+                        }
+                        oul.innerHTML = str;
+
+                    },
+                    error:function(msg){
+                        alert(msg);
+                    }
+                })
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn1">
+        获取新闻
+    </button>
+    <ul id="ul1">
+
+    </ul>
+</body>
+</html>

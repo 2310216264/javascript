@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+            
+        //encodeURI 将中文编译成对应的字符
+        
+        // decodeURI 将对应的字符编译成中文
+            //设置cookie
+            function afterofDate(n){
+                var d = new Date();
+                var day = d.getDate();
+                d.setDate(n+day);
+                return d;
+            }
+
+            document.cookie = "username=xxx;expires=" + afterofDate(7);
+
+            window.onload = function(){
+                var bt = document.getElementById("btn1");
+                bt.onclick = function(){
+                    document.cookie = "username=123";
+                }
+            }
+    </script>
+</head>
+<body>
+    <button id="btn1">删除</button>
+</body>
+</html>
