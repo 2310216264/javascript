@@ -1,0 +1,45 @@
+满足一下特点的叫做闭包：
+    1、函数嵌套函数
+    2、内部函数使用外部函数的形参和变量
+    3、被引用的形参和变量就不会被【垃圾回收机所回收】
+
+好处：
+    1、希望一个变量常驻在内存当中
+    2、避免全局变量污染 避免声明全局变量
+    3、可以声明私有成员
+
+立即执行函数
+
+var ccc = (function(){
+    var a = 2;
+    return function(){
+        a++;
+        alert(a);
+    }
+})();
+ccc();
+
+一个闭包里面的变量是这个作用域里的私有变量
+
+-------------------------gulp到本地
+1、全局安装gulp
+    cnpm install gulp -p
+    gulp -v 查看gulp安装版本
+
+2、cd 项目目录
+
+3、初始化当前项目
+    cnpm init
+    [注]shengc package.json的文件，存放当前项目配置信息
+
+4、当前项目里面安装gulp到本地
+    cnpm install gulp@3.9.1 --save-dev 回退版本
+    cnpm i gulp -D
+
+    -save 将文件，安装到当前文件夹
+    -dev  将安装gulp的信息保存在package.json里面
+
+5、创建gulpfile.js的文件，专门gulp去编写任务的
+
+6、gulpfile.js中编写任务，需要在控制台中通过
+    gulp任务名  去运行任务

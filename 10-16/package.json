@@ -1,0 +1,12 @@
+{
+  "name": "10-16",
+  "version": "1.0.0",
+  "description": "当前项目的描述",
+  "main": "index.js",
+  "scripts": {},
+  "author": "1",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
